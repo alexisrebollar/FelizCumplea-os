@@ -4,18 +4,18 @@
 <head>
 	<title>Feliz Cumpleaños!!!!!</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="icon" type="image/gif" href="fotos/pastel2.gif">
 </head>
 
 <body class="landing">
 
-	<!-- Page Wrapper -->
 	<div id="page-wrapper">
 
-		<!-- Header -->
-		<header id="header" class="alt">
-			<h1>
+		<header id="header">
+			<h1 class="title-header">
+				<img src="fotos/pastel.gif" class="pastel-gif">
 				<a href="index.html">Feliz Cumpleaños, Amy 💖, mi pandita rojo</a>
 			</h1>
 
@@ -42,7 +42,6 @@
 			</nav>
 		</header>
 
-		<!-- Banner -->
 		<section id="banner">
 			<div class="inner">
 				<h2>¡Feliz Cumpleaños, mi amor!</h2>
@@ -128,7 +127,7 @@
 				</div>
 			</section>
 
-			<section class="spotlight">
+			<section class="spotlight style2">
 				<div class="image"><img src="fotos/Collage_Felicidad.jpg" alt="" /></div>
 				<div class="content">
 					<h2>He encontrado en ti…<br />Mi felicidad diaria</h2>
@@ -176,7 +175,7 @@
 				</div>
 			</section>
 
-			<section class="spotlight">
+			<section class="spotlight style3">
 				<div class="image"><img src="fotos/Collage_salidas.jpg" alt="" /></div>
 				<div class="content">
 					<h2>He encontrado en ti…<br />Momentos que se vuelven eternos</h2>
@@ -215,7 +214,7 @@
 				</div>
 			</section>
 
-			<section class="spotlight">
+			<section class="spotlight style4">
 				<div class="image">
 					<img src="fotos/L1150778.jpg" alt="" />
 				</div>
@@ -271,19 +270,36 @@
 					</ul>
 
 					<p>
-						Hoy no solo celebramos el día en que naciste…<br />
-						Celebramos el corazón enorme que entregas todos los días.<br /><br />
+						Hoy no solo celebramos el día en que naciste…<br>
+						Celebramos el corazón enorme que entregas todos los días.<br><br>
 
-						Tus niños especiales no solo tienen una guía…<br />
-						Tienen un ángel que camina con ellos.
+						Tus niños especiales no solo tienen una guía…<br>
+						Tienen un ángel que camina con ellos.<br><br>
+
+						Y yo, mi amor, tengo la dicha de caminar a tu lado.<br>
+						De ver cómo brillas, cómo das sin esperar, cómo amas sin medida.<br><br>
+
+						Que este nuevo año te devuelva todo lo bueno que siembras.<br>
+						Que la vida te abrace con la misma ternura con la que tú abrazas tu vocación.<br><br>
+
+						Feliz cumpleaños, mi niña hermosa.<br>
+						Gracias por existir, por elegirme, por esperarme.<br><br>
+
+						Te amo. Te amo. Te amo.<br>
 					</p>
 
-					<!-- CARD QUE SE ABRE -->
+					<div class="signature">
+						Siempre tuyo,<br>
+						Lunario ⚜️💖🥹
+					</div>
+
+
 					<div class="card-container">
 						<div class="love-card" id="loveCard">
+
 							<div class="card-front">
 								<h3>💌 Tengo algo para ti</h3>
-								<button onclick="openCard()">Abrir carta</button>
+								<button class="cinema-btn" onclick="toggleCard()">Abrir carta</button>
 							</div>
 
 							<div class="card-inside">
@@ -305,11 +321,23 @@
 									sería que nunca dejes de brillar como lo haces.
 									Porque tu brillo cambia vidas.
 								</p>
+
+								<button class="cinema-btn" onclick="mostrarVideo()">Ver sorpresa 🎬</button>
 							</div>
 						</div>
 					</div>
 
-				</div>
+					<div class="video-overlay" id="videoOverlay">
+						<div class="video-card">
+							<video id="videoSorpresa" controls>
+								<source src="fotos/video.mp4" type="video/mp4">
+								Tu navegador no soporta video.
+							</video>
+
+							<button class="cinema-btn" onclick="cerrarVideo()">Cerrar</button>
+						</div>
+					</div>
+					<br><br />
 			</section>
 
 		</section>
@@ -354,21 +382,122 @@
 	<script src="assets/js/jquery.scrolly.min.js"></script>
 	<script src="assets/js/skel.min.js"></script>
 	<script src="assets/js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="assets/js/main.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
 	<script>
-		function openCard() {
-			const card = document.getElementById("loveCard");
-			const music = document.getElementById("loveMusic");
+		function toggleCard() {
+			const card = document.getElementById('loveCard');
 
-			card.classList.toggle("open");
-
-			if (card.classList.contains("open")) {
-				music.play();
+			if (!card.classList.contains('open')) {
+				card.classList.add('open');
+				lanzarConfetiEsposa();
 			} else {
-				music.pause();
-				music.currentTime = 0;
+				card.classList.remove('open');
 			}
+		}
+
+		function lanzarConfetiEsposa() {
+			const isMobile = window.innerWidth <= 768;
+
+			const coloresRomanticos = [
+				'#ff2e6e', // rosa mexicano
+				'#d4af37', // dorado
+				'#ff1493', // rosa intenso
+				'#ff6b9c', // rosa claro
+				'#ffffff', // blanco
+				'#e6c3c3', // rosa palo
+				'#ffb6c1', // rosa pastel
+				'#c0a0c0', // lavanda
+				'#ff4500'  // rojo anaranjado (toque pasión)
+			];
+
+			confetti({
+				particleCount: isMobile ? 120 : 250,
+				spread: isMobile ? 80 : 120,
+				origin: { y: 0.5, x: 0.5 },
+				startVelocity: 35,
+				colors: coloresRomanticos,
+				shapes: ['circle', 'square'],
+				ticks: 300
+			});
+
+			setTimeout(() => {
+				confetti({
+					particleCount: isMobile ? 80 : 180,
+					spread: isMobile ? 60 : 100,
+					origin: { y: 0, x: 0.5 },
+					startVelocity: 25,
+					colors: coloresRomanticos.slice(0, 5),
+					shapes: ['circle']
+				});
+			}, 200);
+
+			setTimeout(() => {
+				confetti({
+					particleCount: isMobile ? 40 : 80,
+					angle: 60,
+					spread: 50,
+					origin: { x: 0, y: 0.6 },
+					colors: coloresRomanticos.slice(2, 7)
+				});
+
+				confetti({
+					particleCount: isMobile ? 40 : 80,
+					angle: 120,
+					spread: 50,
+					origin: { x: 1, y: 0.6 },
+					colors: coloresRomanticos.slice(0, 5)
+				});
+			}, 400);
+
+			setTimeout(() => {
+				for (let i = 0; i < (isMobile ? 3 : 5); i++) {
+					confetti({
+						particleCount: 30,
+						spread: 30,
+						origin: {
+							y: 0.3 + (i * 0.1),
+							x: 0.2 + (i * 0.15)
+						},
+						startVelocity: 20,
+						colors: [coloresRomanticos[i % coloresRomanticos.length]]
+					});
+				}
+			}, 600);
+
+			setTimeout(() => {
+				confetti({
+					particleCount: isMobile ? 60 : 120,
+					spread: isMobile ? 70 : 100,
+					origin: { y: 0.3, x: 0.5 },
+					startVelocity: 15,
+					colors: ['#d4af37', '#ff2e6e', '#ffffff']
+				});
+			}, 800);
+		}
+
+		function mostrarVideo() {
+			const overlay = document.getElementById("videoOverlay");
+			const video = document.getElementById("videoSorpresa");
+
+			overlay.classList.add("active");
+			video.play();
+
+			confetti({
+				particleCount: 60,
+				spread: 60,
+				origin: { y: 0.6 },
+				colors: ['#d4af37', '#ffffff']
+			});
+		}
+
+		function cerrarVideo() {
+			const overlay = document.getElementById("videoOverlay");
+			const video = document.getElementById("videoSorpresa");
+
+			video.pause();
+			video.currentTime = 0;
+			overlay.classList.remove("active");
 		}
 	</script>
 </body>
