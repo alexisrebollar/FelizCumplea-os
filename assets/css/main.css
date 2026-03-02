@@ -2147,15 +2147,21 @@ input[type="radio"]+label:before {
 }
 
 .icon.style1 {
-	color: #00ffcc;
+	color: #f48fb1;
+	/* rosa frambuesa suave */
+	text-shadow: 0 0 8px rgba(244, 143, 177, 0.6);
 }
 
 .icon.style2 {
-	color: #00f0ff;
+	color: #ce93d8;
+	/* lavanda romántico */
+	text-shadow: 0 0 8px rgba(206, 147, 216, 0.6);
 }
 
 .icon.style3 {
-	color: #76ddff;
+	color: #ba68c8;
+	/* malva elegante */
+	text-shadow: 0 0 8px rgba(186, 104, 200, 0.6);
 }
 
 /* Image */
@@ -2258,6 +2264,8 @@ ul.icons li:last-child {
 
 ul.icons.major {
 	padding: 1em 0;
+	transition: transform 0.3s ease;
+	filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.2));	
 }
 
 ul.icons.major li {
@@ -2869,8 +2877,10 @@ button:disabled,
 }
 
 .wrapper.style1 {
-	background-color: #21b2a6;
-	color: #c7ebe8;
+	background-color: #c2185b;
+	/* rosa profundo elegante */
+	color: #ffe4ec;
+	/* rosa claro suave */
 }
 
 .wrapper.style1 strong,
@@ -3033,11 +3043,31 @@ button:disabled,
 
 .wrapper.style2 {
 	background-color: #2e3842;
+	color: #ffffff;
+	box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.25);
 }
 
-.wrapper.style3 {
-	background-color: #505393;
-	color: #d3d4e4;
+/* Rosa romántico con mejor contraste */
+.spotlight.style2 {
+	background: radial-gradient(circle at top left, #ff9eb5 0%, #e91e63 50%, #ad1457 100%);
+	color: #ffffff;
+	box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Rosa medio intenso */
+.spotlight.style3 {
+	background: radial-gradient(circle at bottom right, #f06292 0%, #d81b60 50%, #880e4f 100%);
+	color: #ffffff;
+	box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Variante elegante profunda */
+.spotlight.style4 {
+	background: radial-gradient(circle at bottom right, #ec407a 0%, #c2185b 50%, #7b1e3a 100%);
+	color: #ffffff;
+	box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.45);
 }
 
 .wrapper.style3 strong,
@@ -4071,7 +4101,7 @@ body.is-mobile.landing #footer {
 }
 
 .cursor-pointer {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .video {
@@ -4080,12 +4110,15 @@ body.is-mobile.landing #footer {
 }
 
 .video-vertical {
-	width: 320px;          /* tamaño ideal tipo celular */
-	max-width: 90%;        /* adaptable en móvil */
-	aspect-ratio: 9 / 16;  /* mantiene proporción vertical */
+	width: 320px;
+	/* tamaño ideal tipo celular */
+	max-width: 90%;
+	/* adaptable en móvil */
+	aspect-ratio: 9 / 16;
+	/* mantiene proporción vertical */
 	object-fit: cover;
 	border-radius: 16px;
-	box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .spotlight .image video {
@@ -4095,8 +4128,226 @@ body.is-mobile.landing #footer {
 	border-radius: 0;
 }
 
-@keyframes pulse {
-	0% { box-shadow: 0 0 0 0 rgba(255,46,110,0.5); }
-	70% { box-shadow: 0 0 0 15px rgba(255,46,110,0); }
-	100% { box-shadow: 0 0 0 0 rgba(255,46,110,0); }
+.spotlight.birthday-special .card-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 3em;
+	perspective: 1600px;
+}
+
+.spotlight.birthday-special .love-card {
+	width: 100%;
+	max-width: 520px;
+	min-height: 420px; /* cambiado de height a min-height */
+	position: relative;
+	transform-style: preserve-3d;
+	transition: transform 1.2s cubic-bezier(.4, .2, .2, 1);
+}
+
+.spotlight.birthday-special .love-card.open {
+	transform: rotateY(180deg);
+}
+
+.spotlight.birthday-special .card-front,
+.spotlight.birthday-special .card-inside {
+	position: absolute;
+	width: 100%;
+	min-height: 420px;
+	backface-visibility: hidden;
+	border-radius: 24px;
+	padding: 2em; /* reducido */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+	box-shadow: 0 40px 90px rgba(0, 0, 0, 0.9);
+	border: 1px solid rgba(212, 175, 55, 0.25);
+	overflow: hidden;
+}
+
+.spotlight.birthday-special .card-inside {
+	transform: rotateY(180deg);
+	text-align: left;
+	justify-content: flex-start; /* importante */
+	overflow: visible; /* quitamos scroll */
+}
+
+/* Brillo animado sutil */
+.spotlight.birthday-special .card-front::before,
+.spotlight.birthday-special .card-inside::before {
+	content: "";
+	position: absolute;
+	width: 200%;
+	height: 200%;
+	background: linear-gradient(
+		120deg,
+		transparent 30%,
+		rgba(255, 255, 255, 0.05),
+		transparent 70%
+	);
+	transform: rotate(25deg);
+	animation: shine 6s infinite linear;
+	pointer-events: none;
+}
+
+
+@keyframes shine {
+	0% {
+		transform: translateX(-100%) rotate(25deg);
+	}
+	100% {
+		transform: translateX(100%) rotate(25deg);
+	}
+}
+
+/* BOTÓN CINEMA (para todos) */
+.cinema-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+
+	background: linear-gradient(45deg, #ff2e6e, #ff6b9c);
+	border: none;
+	padding: 0 2.5em;
+	height: 50px;
+
+	color: #fff;
+	font-weight: 600;
+	font-size: 1rem;
+
+	border-radius: 40px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.cinema-btn:hover {
+	transform: scale(1.05);
+	box-shadow: 0 15px 30px rgba(255, 46, 110, 0.4);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+	.spotlight.birthday-special .love-card {
+		max-width: 95%;
+		height: 480px;
+	}
+}
+
+.video-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.92);
+	backdrop-filter: blur(8px);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.5s ease;
+
+	z-index: 9999;
+}
+
+.video-overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.video-card {
+	background: linear-gradient(145deg, #111, #1c1c1c);
+	padding: 2em;
+	border-radius: 28px;
+	box-shadow: 0 50px 140px rgba(0, 0, 0, 0.9);
+	border: 2px solid rgba(212, 175, 55, 0.4);
+	transform: scale(0.9);
+	transition: transform 0.5s ease;
+}
+
+.video-overlay.active .video-card {
+	transform: scale(1);
+}
+
+.video-card video {
+	width: 100%;
+	max-width: 750px;
+	border-radius: 18px;
+	box-shadow:
+		0 0 0 3px rgba(212, 175, 55, 0.6),
+		0 30px 90px rgba(0, 0, 0, 0.9);
+	margin-bottom: 1.8em;
+}
+
+/* ===============================
+   HEADER CUMPLEAÑOS PREMIUM
+================================ */
+
+.title-header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	flex-wrap: wrap;
+	text-align: center;
+}
+
+/* GIF */
+.pastel-gif {
+	width: 48px;
+	height: auto;
+	animation: float 3s ease-in-out infinite;
+}
+
+/* Animación flotante elegante */
+@keyframes float {
+
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-6px);
+	}
+}
+
+/* Texto romántico con glow */
+.title-header a {
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: bold;
+	text-shadow:
+		0 0 8px rgba(255, 105, 180, 0.6),
+		0 2px 6px rgba(0, 0, 0, 0.7);
+	transition: all 0.3s ease;
+}
+
+/* Efecto hover elegante */
+.title-header a:hover {
+	text-shadow:
+		0 0 12px rgba(255, 105, 180, 0.9),
+		0 0 20px rgba(255, 105, 180, 0.6),
+		0 2px 8px rgba(0, 0, 0, 0.8);
+	transform: scale(1.02);
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+/* En móvil el gif se va a la derecha */
+@media (max-width: 768px) {
+	.title-header {
+		flex-direction: row-reverse;
+		gap: 10px;
+	}
+
+	.pastel-gif {
+		width: 40px;
+	}
 }
