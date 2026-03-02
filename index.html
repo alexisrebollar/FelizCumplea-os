@@ -4,7 +4,7 @@
 <head>
 	<title>Feliz Cumpleaños!!!!!</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="icon" type="image/gif" href="fotos/pastel2.gif">
 </head>
@@ -61,7 +61,6 @@
 			<a href="#one" class="more scrolly">Comenzar</a>
 		</section>
 
-		<!-- One -->
 		<section id="one" class="wrapper style1 special">
 			<div class="inner">
 				<header class="major">
@@ -100,7 +99,6 @@
 			</div>
 		</section>
 
-		<!-- Two -->
 		<section id="two" class="wrapper alt style2">
 
 			<section class="spotlight">
@@ -293,58 +291,80 @@
 						Lunario ⚜️💖🥹
 					</div>
 
-
 					<div class="card-container">
 						<div class="love-card" id="loveCard">
 
 							<div class="card-front">
 								<h3>💌 Tengo algo para ti</h3>
-								<button class="cinema-btn" onclick="toggleCard()">Abrir carta</button>
+								<button class="cinema-btn" onclick="abrirCarta()">Abrir carta</button>
 							</div>
 
-							<div class="card-inside">
-								<h3>Feliz cumpleaños, mujer maravillosa</h3>
-								<p>
-									Verte con tus niños me enseñó que el amor verdadero
-									no solo se siente… se entrega.<br /><br />
+							<div class="modal-overlay" id="modalCarta">
+								<div class="modal-content">
+									<a class="modal-close" onclick="cerrarCarta()">×</a>
 
-									Admiro tu paciencia.
-									Admiro tu fuerza.
-									Admiro la ternura con la que transformas vidas.<br /><br />
+									<h3>Feliz cumpleaños, mujer maravillosa</h3>
+									<p>
+										Verte con tus niños me enseñó que el amor verdadero
+										no solo se siente… se entrega.<br><br>
+										Admiro tu paciencia.
+										Admiro tu fuerza.
+										Admiro la ternura con la que transformas vidas.<br><br>
+										Hoy celebro tu cumpleaños…
+										pero también celebro tu vocación,
+										tu luz,
+										y la manera en que haces del mundo un lugar más humano.<br><br>
+										Si pudiera pedir algo en tu día,
+										sería que nunca dejes de brillar como lo haces.
+										Porque tu brillo cambia vidas.
+									</p>
 
-									Hoy celebro tu cumpleaños…
-									pero también celebro tu vocación,
-									tu luz,
-									y la manera en que haces del mundo un lugar más humano.<br /><br />
-
-									Si pudiera pedir algo en tu día,
-									sería que nunca dejes de brillar como lo haces.
-									Porque tu brillo cambia vidas.
-								</p>
-
-								<button class="cinema-btn" onclick="mostrarVideo()">Ver sorpresa 🎬</button>
+									<button class="cinema-btn" onclick="mostrarVideo()">Ver sorpresa 🎬</button>
+								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="video-overlay" id="videoOverlay">
-						<div class="video-card">
-							<video id="videoSorpresa" controls>
-								<source src="fotos/video.mp4" type="video/mp4">
-								Tu navegador no soporta video.
-							</video>
+					<div class="video-overlay hide" id="videoOverlay">
+						<div class="video-content">
+							<a class="modal-close" onclick="cerrarVideo()">×</a>
 
-							<button class="cinema-btn" onclick="cerrarVideo()">Cerrar</button>
+							<div class="video-slide">
+								<h3>Feliz cumpleaños, amor, Dios y yo celebramos contigo</h3>
+								<video controls>
+									<source src="videos/video1.mp4" type="video/mp4">
+									Tu navegador no soporta video.
+								</video>
+							</div>
+
+							<div class="video-slide hide">
+								<h3>Un cumpleaños con ritmo PXNDX</h3>
+								<video controls>
+									<source src="videos/video2.mp4" type="video/mp4">
+									Tu navegador no soporta video.
+								</video>
+							</div>
+
+							<div class="video-slide hide">
+								<h3>Feliz cumpleaños, amor, con Dios y todo mi corazón</h3>
+								<video controls>
+									<source src="videos/video3.mp4" type="video/mp4">
+									Tu navegador no soporta video.
+								</video>
+							</div>
+
+							<div class="video-controls">
+								<button onclick="prevVideo()">← Anterior</button>
+								<button onclick="nextVideo()">Siguiente →</button>
+							</div>
 						</div>
 					</div>
-					<br><br />
 			</section>
 
 		</section>
 
-		<!-- Footer -->
 		<footer id="footer">
-			<ul class="icons">
+			<ul class="romantic-hearts">
 				<li><a href="#" class="icon fa-heart"><span class="label">·</span></a></li>
 				<li><a href="#" class="icon fa-heart"><span class="label">·</span></a></li>
 				<li><a href="#" class="icon fa-heart"><span class="label">·</span></a></li>
@@ -366,17 +386,19 @@
 				<li><a href="#" class="icon fa-heart"><span class="label">·</span></a></li>
 				<li><a href="#" class="icon fa-heart"><span class="label">·</span></a></li>
 			</ul>
+
 			<ul class="copyright">
 				<li>&copy; Alexis Orlando Rebollar Lopez</li>
-				<li><a href="https://github.com/alexisrebollar" class="icon fa-github"><span
-							class="label">Email</span></a></li>
-
+				<li>
+					<a href="https://github.com/alexisrebollar" class="icon fa-github">
+						<span class="label">GitHub</span>
+					</a>
+				</li>
 			</ul>
 		</footer>
 
 	</div>
 
-	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -385,8 +407,12 @@
 	<script src="assets/js/main.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
 	<script>
-		function toggleCard() {
-			const card = document.getElementById('loveCard');
+
+		function abrirCarta() {
+			const card = document.getElementById('modalCarta');
+			$("#modalCarta").removeClass("hide");
+
+			card.style.display = 'flex';
 
 			if (!card.classList.contains('open')) {
 				card.classList.add('open');
@@ -396,19 +422,17 @@
 			}
 		}
 
+		function cerrarCarta() {
+			const modal = document.getElementById('modalCarta');
+			modal.style.display = 'none';
+		}
+
 		function lanzarConfetiEsposa() {
 			const isMobile = window.innerWidth <= 768;
 
 			const coloresRomanticos = [
-				'#ff2e6e', // rosa mexicano
-				'#d4af37', // dorado
-				'#ff1493', // rosa intenso
-				'#ff6b9c', // rosa claro
-				'#ffffff', // blanco
-				'#e6c3c3', // rosa palo
-				'#ffb6c1', // rosa pastel
-				'#c0a0c0', // lavanda
-				'#ff4500'  // rojo anaranjado (toque pasión)
+				'#ff2e6e', '#d4af37', '#ff1493', '#ff6b9c',
+				'#ffffff', '#e6c3c3', '#ffb6c1', '#c0a0c0', '#ff4500'
 			];
 
 			confetti({
@@ -418,7 +442,8 @@
 				startVelocity: 35,
 				colors: coloresRomanticos,
 				shapes: ['circle', 'square'],
-				ticks: 300
+				ticks: 300,
+				zIndex: 20000
 			});
 
 			setTimeout(() => {
@@ -434,71 +459,126 @@
 
 			setTimeout(() => {
 				confetti({
+					particleCount: isMobile ? 80 : 180,
+					spread: isMobile ? 60 : 100,
+					origin: { y: 0, x: 0.5 },
+					startVelocity: 25,
+					colors: coloresRomanticos.slice(0, 5),
+					shapes: ['circle'],
+					zIndex: 20000
+				});
+			}, 200);
+
+			setTimeout(() => {
+				confetti({
 					particleCount: isMobile ? 40 : 80,
 					angle: 60,
 					spread: 50,
 					origin: { x: 0, y: 0.6 },
-					colors: coloresRomanticos.slice(2, 7)
+					colors: coloresRomanticos.slice(2, 7),
+					zIndex: 20000
 				});
-
 				confetti({
 					particleCount: isMobile ? 40 : 80,
 					angle: 120,
 					spread: 50,
 					origin: { x: 1, y: 0.6 },
-					colors: coloresRomanticos.slice(0, 5)
+					colors: coloresRomanticos.slice(0, 5),
+					zIndex: 20000
 				});
 			}, 400);
-
-			setTimeout(() => {
-				for (let i = 0; i < (isMobile ? 3 : 5); i++) {
-					confetti({
-						particleCount: 30,
-						spread: 30,
-						origin: {
-							y: 0.3 + (i * 0.1),
-							x: 0.2 + (i * 0.15)
-						},
-						startVelocity: 20,
-						colors: [coloresRomanticos[i % coloresRomanticos.length]]
-					});
-				}
-			}, 600);
-
-			setTimeout(() => {
-				confetti({
-					particleCount: isMobile ? 60 : 120,
-					spread: isMobile ? 70 : 100,
-					origin: { y: 0.3, x: 0.5 },
-					startVelocity: 15,
-					colors: ['#d4af37', '#ff2e6e', '#ffffff']
-				});
-			}, 800);
 		}
 
+		let currentVideo = 0;
+		const videoSlides = document.querySelectorAll('.video-slide');
+
 		function mostrarVideo() {
-			const overlay = document.getElementById("videoOverlay");
-			const video = document.getElementById("videoSorpresa");
+			const carta = document.getElementById('modalCarta');
+			const overlay = document.getElementById('videoOverlay');
 
-			overlay.classList.add("active");
-			video.play();
+			carta.classList.add('hide');
+			overlay.classList.remove('hide');
+			overlay.style.display = 'flex';
+			overlay.style.zIndex = 20000;
 
-			confetti({
-				particleCount: 60,
-				spread: 60,
-				origin: { y: 0.6 },
-				colors: ['#d4af37', '#ffffff']
-			});
+			showVideo(currentVideo);
+			lanzarConfetiEsposa();
 		}
 
 		function cerrarVideo() {
 			const overlay = document.getElementById("videoOverlay");
-			const video = document.getElementById("videoSorpresa");
+			overlay.style.display = "none";
+			overlay.classList.add("hide");
 
-			video.pause();
-			video.currentTime = 0;
-			overlay.classList.remove("active");
+			videoSlides.forEach(slide => {
+				const video = slide.querySelector("video");
+				video.pause();
+				video.currentTime = 0;
+			});
 		}
+
+		function showVideo(index) {
+			videoSlides.forEach((slide, i) => {
+				if (i === index) {
+					slide.classList.remove("hide");
+					slide.querySelector("video").play();
+				} else {
+					slide.classList.add("hide");
+					const video = slide.querySelector("video");
+					video.pause();
+					video.currentTime = 0;
+				}
+			});
+		}
+
+		function nextVideo() {
+			currentVideo = (currentVideo + 1) % videoSlides.length;
+			showVideo(currentVideo);
+		}
+
+		function prevVideo() {
+			currentVideo = (currentVideo - 1 + videoSlides.length) % videoSlides.length;
+			showVideo(currentVideo);
+		}
+		function startRomanticBeat() {
+			const footer = document.querySelector("#footer");
+			const hearts = document.querySelectorAll("#footer .fa-heart");
+
+			footer.style.position = "relative";
+
+			setInterval(() => {
+				hearts.forEach(heart => {
+					heart.classList.remove("beat");
+					void heart.offsetWidth;
+					heart.classList.add("beat");
+				});
+
+				for (let i = 0; i < 8; i++) {
+					const clone = hearts[0].cloneNode(true);
+					clone.classList.remove("beat");
+					clone.classList.add("heart-clone");
+
+					clone.style.position = "absolute";
+					clone.style.left = Math.random() * (footer.offsetWidth - 20) + "px";
+					clone.style.top = (footer.offsetHeight - 20 - Math.random() * 20) + "px";
+
+					const randomScale = 0.7 + Math.random() * 0.8;
+					clone.style.setProperty("--scale", randomScale);
+
+					const randomDuration = 2.5 + Math.random() * 1.5;
+					clone.style.setProperty("--duration", randomDuration + "s");
+
+					footer.appendChild(clone);
+
+					setTimeout(() => {
+						clone.remove();
+					}, randomDuration * 1000);
+				}
+
+			}, 2000);
+		}
+
+		startRomanticBeat();
 	</script>
 </body>
 
