@@ -2265,7 +2265,7 @@ ul.icons li:last-child {
 ul.icons.major {
 	padding: 1em 0;
 	transition: transform 0.3s ease;
-	filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.2));	
+	filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.2));
 }
 
 ul.icons.major li {
@@ -3445,7 +3445,7 @@ button:disabled,
 	-ms-transition: -ms-transform 0.5s ease;
 	transition: transform 0.5s ease;
 	-webkit-overflow-scrolling: touch;
-	background: #21b2a6;
+	background: #e91e63;
 	color: #ffffff;
 	height: 100%;
 	max-width: 80%;
@@ -3505,7 +3505,6 @@ button:disabled,
 	position: absolute;
 	right: 0;
 	top: 0;
-	vertical-align: middle;
 	width: 7em;
 }
 
@@ -4111,98 +4110,31 @@ body.is-mobile.landing #footer {
 
 .video-vertical {
 	width: 320px;
-	/* tamaño ideal tipo celular */
 	max-width: 90%;
-	/* adaptable en móvil */
 	aspect-ratio: 9 / 16;
-	/* mantiene proporción vertical */
 	object-fit: cover;
 	border-radius: 16px;
 	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-.spotlight .image video {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	border-radius: 0;
-}
-
-.spotlight.birthday-special .card-container {
-	display: flex;
-	justify-content: center;
-	margin-top: 3em;
-	perspective: 1600px;
-}
-
-.spotlight.birthday-special .love-card {
-	width: 100%;
-	max-width: 520px;
-	min-height: 420px; /* cambiado de height a min-height */
-	position: relative;
-	transform-style: preserve-3d;
-	transition: transform 1.2s cubic-bezier(.4, .2, .2, 1);
-}
-
-.spotlight.birthday-special .love-card.open {
-	transform: rotateY(180deg);
-}
-
-.spotlight.birthday-special .card-front,
-.spotlight.birthday-special .card-inside {
-	position: absolute;
-	width: 100%;
-	min-height: 420px;
-	backface-visibility: hidden;
-	border-radius: 24px;
-	padding: 2em; /* reducido */
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	color: #fff;
-	background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
-	box-shadow: 0 40px 90px rgba(0, 0, 0, 0.9);
-	border: 1px solid rgba(212, 175, 55, 0.25);
-	overflow: hidden;
-}
-
-.spotlight.birthday-special .card-inside {
-	transform: rotateY(180deg);
-	text-align: left;
-	justify-content: flex-start; /* importante */
-	overflow: visible; /* quitamos scroll */
-}
-
-/* Brillo animado sutil */
-.spotlight.birthday-special .card-front::before,
-.spotlight.birthday-special .card-inside::before {
-	content: "";
-	position: absolute;
-	width: 200%;
-	height: 200%;
-	background: linear-gradient(
-		120deg,
-		transparent 30%,
-		rgba(255, 255, 255, 0.05),
-		transparent 70%
-	);
-	transform: rotate(25deg);
-	animation: shine 6s infinite linear;
-	pointer-events: none;
-}
-
-
-@keyframes shine {
+@keyframes pulse {
 	0% {
-		transform: translateX(-100%) rotate(25deg);
+		box-shadow: 0 0 0 0 rgba(255, 46, 110, 0.5);
 	}
+
+	70% {
+		box-shadow: 0 0 0 15px rgba(255, 46, 110, 0);
+	}
+
 	100% {
-		transform: translateX(100%) rotate(25deg);
+		box-shadow: 0 0 0 0 rgba(255, 46, 110, 0);
 	}
 }
 
-/* BOTÓN CINEMA (para todos) */
+.hide {
+	visibility: hidden;
+}
+
 .cinema-btn {
 	display: inline-flex;
 	align-items: center;
@@ -4228,63 +4160,12 @@ body.is-mobile.landing #footer {
 	box-shadow: 0 15px 30px rgba(255, 46, 110, 0.4);
 }
 
-/* Responsive */
 @media screen and (max-width: 768px) {
 	.spotlight.birthday-special .love-card {
 		max-width: 95%;
 		height: 480px;
 	}
 }
-
-.video-overlay {
-	position: fixed;
-	inset: 0;
-	background: rgba(0, 0, 0, 0.92);
-	backdrop-filter: blur(8px);
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 0.5s ease;
-
-	z-index: 9999;
-}
-
-.video-overlay.active {
-	opacity: 1;
-	visibility: visible;
-}
-
-.video-card {
-	background: linear-gradient(145deg, #111, #1c1c1c);
-	padding: 2em;
-	border-radius: 28px;
-	box-shadow: 0 50px 140px rgba(0, 0, 0, 0.9);
-	border: 2px solid rgba(212, 175, 55, 0.4);
-	transform: scale(0.9);
-	transition: transform 0.5s ease;
-}
-
-.video-overlay.active .video-card {
-	transform: scale(1);
-}
-
-.video-card video {
-	width: 100%;
-	max-width: 750px;
-	border-radius: 18px;
-	box-shadow:
-		0 0 0 3px rgba(212, 175, 55, 0.6),
-		0 30px 90px rgba(0, 0, 0, 0.9);
-	margin-bottom: 1.8em;
-}
-
-/* ===============================
-   HEADER CUMPLEAÑOS PREMIUM
-================================ */
 
 .title-header {
 	display: flex;
@@ -4295,14 +4176,12 @@ body.is-mobile.landing #footer {
 	text-align: center;
 }
 
-/* GIF */
 .pastel-gif {
 	width: 48px;
 	height: auto;
 	animation: float 3s ease-in-out infinite;
 }
 
-/* Animación flotante elegante */
 @keyframes float {
 
 	0%,
@@ -4315,7 +4194,6 @@ body.is-mobile.landing #footer {
 	}
 }
 
-/* Texto romántico con glow */
 .title-header a {
 	color: #ffffff;
 	text-decoration: none;
@@ -4326,7 +4204,6 @@ body.is-mobile.landing #footer {
 	transition: all 0.3s ease;
 }
 
-/* Efecto hover elegante */
 .title-header a:hover {
 	text-shadow:
 		0 0 12px rgba(255, 105, 180, 0.9),
@@ -4336,11 +4213,6 @@ body.is-mobile.landing #footer {
 }
 
 
-/* ===============================
-   RESPONSIVE
-================================ */
-
-/* En móvil el gif se va a la derecha */
 @media (max-width: 768px) {
 	.title-header {
 		flex-direction: row-reverse;
@@ -4350,4 +4222,281 @@ body.is-mobile.landing #footer {
 	.pastel-gif {
 		width: 40px;
 	}
+}
+
+#footer {
+	position: relative;
+}
+
+#footer .romantic-hearts {
+	display: flex;
+	justify-content: center;
+	gap: 1.5em;
+	list-style: none;
+	padding: 0;
+}
+
+#footer .fa-heart {
+	position: relative;
+	color: #f60093;
+	font-size: 1.4rem;
+	transform-origin: center;
+	transition: transform .25s ease;
+	filter: drop-shadow(0 0 6px rgba(255, 0, 195, 0.6));
+}
+
+#footer .fa-heart.beat {
+	animation: heartBeat .6s ease;
+}
+
+#footer .fa-heart.beat::after {
+	content: "\f004";
+	font-family: "FontAwesome";
+	position: absolute;
+	inset: 0;
+	color: rgba(255, 0, 195, 0.6);
+	animation: heartEcho .6s ease-out;
+	pointer-events: none;
+}
+
+#footer .fa-heart.beat::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 6px;
+	height: 6px;
+	background: radial-gradient(circle, #f60093 0%, transparent 70%);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	animation: sparkle .6s ease-out;
+	pointer-events: none;
+}
+
+.heart-clone {
+	position: absolute;
+	color: rgba(255, 0, 195, 0.7);
+	pointer-events: none;
+	opacity: 0;
+	animation: floatUp var(--duration) ease-out forwards;
+}
+
+@keyframes mainBeat {
+	0% {
+		transform: scale(1);
+	}
+
+	30% {
+		transform: scale(1.6);
+	}
+
+	60% {
+		transform: scale(1);
+	}
+
+	80% {
+		transform: scale(1.3);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes heartBeat {
+	0% {
+		transform: scale(1);
+	}
+
+	30% {
+		transform: scale(1.5);
+	}
+
+	60% {
+		transform: scale(1);
+	}
+
+	80% {
+		transform: scale(1.3);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes heartEcho {
+	0% {
+		transform: scale(1);
+		opacity: .6;
+	}
+
+	100% {
+		transform: scale(2);
+		opacity: 0;
+	}
+}
+
+@keyframes sparkle {
+	0% {
+		transform: translate(-50%, -50%) scale(0);
+		opacity: 0;
+	}
+
+	40% {
+		transform: translate(-50%, -80%) scale(1.5);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translate(-50%, -120%) scale(0);
+		opacity: 0;
+	}
+}
+
+@keyframes cloneExpand {
+	0% {
+		transform: scale(1) translateY(0);
+		opacity: .7;
+	}
+
+	100% {
+		transform: scale(2.3) translateY(-20px);
+		opacity: 0;
+	}
+}
+
+@keyframes floatUp {
+	0% {
+		transform: translateY(0) scale(var(--scale));
+		opacity: 0;
+	}
+
+	15% {
+		opacity: .9;
+	}
+
+	100% {
+		transform: translateY(-150px) scale(calc(var(--scale) + .8));
+		opacity: 0;
+	}
+}
+
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	display: none;
+	justify-content: center;
+	align-items: center;
+	z-index: 10000;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+    padding: 2em;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(.4,.2,.2,1);
+    justify-content: center;
+}
+
+.modal-close {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	background: transparent;
+	border: none;
+	color: white;
+	font-size: 1.5em;
+	font-weight: bold;
+	cursor: pointer;
+	width: auto;
+	height: auto;
+	padding: 0;
+	line-height: 1;
+}
+
+.video-slide {
+    display: block; /* visible por defecto */
+}
+
+.video-slide.hide {
+    display: none;
+}
+
+.video-controls {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.video-controls button {
+    padding: 8px 15px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff2e6e;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.video-controls button:hover {
+    background-color: #ff1493;
+}
+
+.video-overlay .video-content {
+    width: 90%;                /* ancho relativo a la pantalla */
+    max-width: 1000px;         /* ancho máximo para pantallas grandes */
+    height: auto;              /* se ajusta al contenido */
+    max-height: 90vh;          /* no sobrepasa 90% del alto de la pantalla */
+    padding: 1.5em;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    overflow-y: auto;          /* scroll vertical solo si es necesario */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    gap: 1em;                  /* separa títulos y videos */
+}
+
+.video-overlay .modal-close {
+    position: absolute;   /* sobre el modal */
+    top: 10px;
+    right: 15px;
+    background: transparent; /* sin fondo */
+    border: none;           /* sin borde */
+    color: #fff;            /* color de la X */
+    font-size: 2em;         /* tamaño grande para que se vea */
+    font-weight: bold;      
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10001;         /* siempre encima del contenido */
+}
+
+.video-overlay video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    max-height: 60vh;
+}
+
+.video-overlay h3 {
+    text-align: center;
+    color: #fff;
+    margin: 0.5em 0;
 }
