@@ -2,10 +2,11 @@
 <html>
 
 <head>
-	<title>Feliz Cumpleaños!!!!!</title>
+	<title>Amy Feliz Cumpleaños!!!!!</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 	<link rel="icon" type="image/gif" href="fotos/pastel2.gif">
 </head>
 
@@ -240,15 +241,51 @@
 						Que la vida te devuelva multiplicado todo lo que tú das.
 					</p>
 
-					<div class="image">
-						<h3>Un pequeño recuerdo para ti</h3>
+					<h3>Un pequeño recuerdo para ti</h3>
 
-						<video class="video-vertical" controls playsinline>
-							<source src="fotos/2026Amor.mp4" type="video/mp4">
-							Tu navegador no soporta video HTML5.
-						</video>
+					<div class="swiper mySwiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<video class="video-vertical" controls playsinline>
+									<source src="fotos/2026Amor.mp4" type="video/mp4">
+									Tu navegador no soporta video HTML5.
+								</video>
+							</div>
+							<div class="swiper-slide">
+								<video class="video-vertical" controls playsinline>
+									<source src="videos/Video1(2026).mp4" type="video/mp4">
+									Tu navegador no soporta video HTML5.
+								</video>
+							</div>
+							<div class="swiper-slide">
+								<video class="video-vertical" controls playsinline>
+									<source src="videos/Video2(2026).mp4" type="video/mp4">
+									Tu navegador no soporta video HTML5.
+								</video>
+							</div>
+							<div class="swiper-slide">
+								<video class="video-vertical" controls playsinline>
+									<source src="videos/Video3(2026).mp4" type="video/mp4">
+									Tu navegador no soporta video HTML5.
+								</video>
+							</div>
+							<div class="swiper-slide">
+								<video class="video-vertical" controls playsinline>
+									<source src="videos/Video4(2026).mp4" type="video/mp4">
+									Tu navegador no soporta video HTML5.
+								</video>
+							</div>
+							<div class="swiper-slide">
+								<video class="video-vertical" controls playsinline>
+									<source src="videos/Video5(2026).mp4" type="video/mp4">
+									Tu navegador no soporta video HTML5.
+								</video>
+							</div>
+						</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-pagination"></div>
 					</div>
-
 				</div>
 			</section>
 
@@ -353,6 +390,14 @@
 								</video>
 							</div>
 
+							<div class="video-slide hide">
+								<h3>No es lo mismo, pero es de corazón. Feliz cumpleaños, chaparrita.</h3>
+								<video controls>
+									<source src="videos/video3.mp4" type="video/mp4">
+									Tu navegador no soporta video.
+								</video>
+							</div>
+
 							<div class="video-controls">
 								<button onclick="prevVideo()">← Anterior</button>
 								<button onclick="nextVideo()">Siguiente →</button>
@@ -406,180 +451,8 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
-	<script>
-
-		function abrirCarta() {
-			const card = document.getElementById('modalCarta');
-			$("#modalCarta").removeClass("hide");
-
-			card.style.display = 'flex';
-
-			if (!card.classList.contains('open')) {
-				card.classList.add('open');
-				lanzarConfetiEsposa();
-			} else {
-				card.classList.remove('open');
-			}
-		}
-
-		function cerrarCarta() {
-			const modal = document.getElementById('modalCarta');
-			modal.style.display = 'none';
-		}
-
-		function lanzarConfetiEsposa() {
-			const isMobile = window.innerWidth <= 768;
-
-			const coloresRomanticos = [
-				'#ff2e6e', '#d4af37', '#ff1493', '#ff6b9c',
-				'#ffffff', '#e6c3c3', '#ffb6c1', '#c0a0c0', '#ff4500'
-			];
-
-			confetti({
-				particleCount: isMobile ? 120 : 250,
-				spread: isMobile ? 80 : 120,
-				origin: { y: 0.5, x: 0.5 },
-				startVelocity: 35,
-				colors: coloresRomanticos,
-				shapes: ['circle', 'square'],
-				ticks: 300,
-				zIndex: 20000
-			});
-
-			setTimeout(() => {
-				confetti({
-					particleCount: isMobile ? 80 : 180,
-					spread: isMobile ? 60 : 100,
-					origin: { y: 0, x: 0.5 },
-					startVelocity: 25,
-					colors: coloresRomanticos.slice(0, 5),
-					shapes: ['circle']
-				});
-			}, 200);
-
-			setTimeout(() => {
-				confetti({
-					particleCount: isMobile ? 80 : 180,
-					spread: isMobile ? 60 : 100,
-					origin: { y: 0, x: 0.5 },
-					startVelocity: 25,
-					colors: coloresRomanticos.slice(0, 5),
-					shapes: ['circle'],
-					zIndex: 20000
-				});
-			}, 200);
-
-			setTimeout(() => {
-				confetti({
-					particleCount: isMobile ? 40 : 80,
-					angle: 60,
-					spread: 50,
-					origin: { x: 0, y: 0.6 },
-					colors: coloresRomanticos.slice(2, 7),
-					zIndex: 20000
-				});
-				confetti({
-					particleCount: isMobile ? 40 : 80,
-					angle: 120,
-					spread: 50,
-					origin: { x: 1, y: 0.6 },
-					colors: coloresRomanticos.slice(0, 5),
-					zIndex: 20000
-				});
-			}, 400);
-		}
-
-		let currentVideo = 0;
-		const videoSlides = document.querySelectorAll('.video-slide');
-
-		function mostrarVideo() {
-			const carta = document.getElementById('modalCarta');
-			const overlay = document.getElementById('videoOverlay');
-
-			carta.classList.add('hide');
-			overlay.classList.remove('hide');
-			overlay.style.display = 'flex';
-			overlay.style.zIndex = 20000;
-
-			showVideo(currentVideo);
-			lanzarConfetiEsposa();
-		}
-
-		function cerrarVideo() {
-			const overlay = document.getElementById("videoOverlay");
-			overlay.style.display = "none";
-			overlay.classList.add("hide");
-
-			videoSlides.forEach(slide => {
-				const video = slide.querySelector("video");
-				video.pause();
-				video.currentTime = 0;
-			});
-		}
-
-		function showVideo(index) {
-			videoSlides.forEach((slide, i) => {
-				if (i === index) {
-					slide.classList.remove("hide");
-					slide.querySelector("video").play();
-				} else {
-					slide.classList.add("hide");
-					const video = slide.querySelector("video");
-					video.pause();
-					video.currentTime = 0;
-				}
-			});
-		}
-
-		function nextVideo() {
-			currentVideo = (currentVideo + 1) % videoSlides.length;
-			showVideo(currentVideo);
-		}
-
-		function prevVideo() {
-			currentVideo = (currentVideo - 1 + videoSlides.length) % videoSlides.length;
-			showVideo(currentVideo);
-		}
-		function startRomanticBeat() {
-			const footer = document.querySelector("#footer");
-			const hearts = document.querySelectorAll("#footer .fa-heart");
-
-			footer.style.position = "relative";
-
-			setInterval(() => {
-				hearts.forEach(heart => {
-					heart.classList.remove("beat");
-					void heart.offsetWidth;
-					heart.classList.add("beat");
-				});
-
-				for (let i = 0; i < 8; i++) {
-					const clone = hearts[0].cloneNode(true);
-					clone.classList.remove("beat");
-					clone.classList.add("heart-clone");
-
-					clone.style.position = "absolute";
-					clone.style.left = Math.random() * (footer.offsetWidth - 20) + "px";
-					clone.style.top = (footer.offsetHeight - 20 - Math.random() * 20) + "px";
-
-					const randomScale = 0.7 + Math.random() * 0.8;
-					clone.style.setProperty("--scale", randomScale);
-
-					const randomDuration = 2.5 + Math.random() * 1.5;
-					clone.style.setProperty("--duration", randomDuration + "s");
-
-					footer.appendChild(clone);
-
-					setTimeout(() => {
-						clone.remove();
-					}, randomDuration * 1000);
-				}
-
-			}, 2000);
-		}
-
-		startRomanticBeat();
-	</script>
+	<script src="assets/js/indexMain.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 </body>
 
 </html>
