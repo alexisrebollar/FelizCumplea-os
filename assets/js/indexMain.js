@@ -1,21 +1,41 @@
+var swiper;
+
 $(document).ready(function () {
   startRomanticBeat();
 
-    const swiper = new Swiper('.mySwiper', {
+   swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
     spaceBetween: 20,
     loop: true,
     centeredSlides: true,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
     pagination: {
-      el: '.swiper-pagination',
+      el: ".swiper-pagination",
       clickable: true,
     },
+    autoplay: false,
+  });
+
+  document.querySelectorAll(".video-vertical").forEach((video) => {
+    video.addEventListener("play", () => {
+      // Pausar todos los demás videos
+      document.querySelectorAll(".video-vertical").forEach((v) => {
+        if (v !== video) v.pause();
+      });
+    });
+  });
+
+  swiper.on("slideChange", () => {
+    pauseAllVideos();
   });
 });
+
+  function pauseAllVideos() {
+    document.querySelectorAll(".video-vertical").forEach((video) => video.pause());
+  }
 
 function abrirCarta() {
   const card = document.getElementById("modalCarta");
